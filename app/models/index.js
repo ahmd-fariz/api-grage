@@ -44,6 +44,7 @@ db.pelanggan = require("./Pelanggan.js")(sequelize, Sequelize);
 db.invoice = require("./invoice.js")(sequelize, Sequelize);
 //db.backup = require("./backup.js")(sequelize, Sequelize);
 db.cart_paket = require("./cartPaket.js")(sequelize, Sequelize);
+db.artikel = require("./Artikel.js")(sequelize, Sequelize);
 
 // Invoice Model
 // db.invoice.hasMany(db.cart_paket, {
@@ -67,6 +68,16 @@ db.pelanggan.hasMany(db.invoice, {
 db.invoice.belongsTo(db.pelanggan, {
   foreignKey: "pelanggan_id",
   as: "pelanggas",
+});
+
+db.artikel.hasMany(db.administrators, {
+  foreignKey: "admin_id",
+  as: "Administrators",
+});
+
+db.administrators.belongsTo(db.artikel, {
+  foreignKey: "admin_id",
+  as: "Artikels",
 });
 
 // Paket Model

@@ -22,5 +22,12 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
+  Administrators.associate = (models) => {
+    Administrators.hasMany(models.artikel, {
+      foreignKey: "admin_id",
+      as: "Artikel",
+    });
+  };
+
   return Administrators;
 };
