@@ -18,13 +18,21 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
       allowNull: false,
     },
+    foto_artikel: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    url_foto_artikel: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
   });
   Artikel.associate = (models) => {
-    Artikel.belongsTo(models.administrators,{
-        foreignKey: "admin_id",
-        as: "administrators"  
-    })
-  }
+    Artikel.belongsTo(models.administrators, {
+      foreignKey: "admin_id",
+      as: "administrators",
+    });
+  };
 
   return Artikel;
 };
